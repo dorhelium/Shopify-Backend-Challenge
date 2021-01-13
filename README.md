@@ -10,16 +10,17 @@ To run and test this project on local: please ensure Java 1.8, maven, PostgreSQL
 
 The architecture of this image repository is:
 
-User ---> ImageStore ---> images
+User ---owns---> ImageStore ---contains---> images
 
 Each registered user owns the a image store. Each image store contain many images. The images can be public or private depending on what the image store owner provides.
 
-* The users can add/delete/update/get the all the images from its own image store. These actions require authentication.
+* The users can add/delete/update/get the all the images from their own image store. These actions require authentication.
 
-* Add/delete/update images from other user's image store is forbbiden by authentication. 
-Private images from other user's image store is not allowed to be retrieved. Only the public images from other user's image store can be retrived.
+* Add/delete/update images from other user's image store is forbbiden. 
 
-* Bulk add/delete images are allowed. These APIs are transactional to ensure the automicity (all or none) of bulk add/delete.
+* Private images from other user's image store are not allowed to be retrieved. Public images can be retrived by all registered users.
+
+* Bulk add/delete images are allowed. These APIs are **transactional** to ensure all or none during bulk add/delete.
 
 
 # APIs
