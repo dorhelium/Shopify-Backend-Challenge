@@ -44,4 +44,15 @@ public class ImageStoreController {
         return imageStoreService.getImageStoreById(storeId);
     }
 
+    @RequestMapping(value = "/image_store/{id}/image/{image_id}", method = RequestMethod.PUT)
+    public ImageStoreDto deleteImagesFromImageStore(@RequestBody ImageDto imageDto,
+                                                    @PathVariable(name="id") int storeId,
+                                                    @PathVariable(name="image_id") int imageId,
+                                                    Principal principal){
+        if(userService.getStoreId(principal.getName())!=storeId){
+            throw new UnauthorizedActionException("Unauthorized to access ImageStore-"+ storeId);
+        }
+        return imageStoreService.updateExistingImage(imageDto, imageId,storeId);
+    }
+
 }

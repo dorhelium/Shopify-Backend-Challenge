@@ -11,10 +11,12 @@ import java.util.Base64;
 public class ImageDto {
     private int id;
     private String imageData;
+    private boolean isPublic;
 
     public ImageDto (Image image){
         this.id=image.getId();
         this.imageData = Base64.getEncoder().encodeToString(image.getImageData());
+        this.isPublic = image.isPublic();
     }
 
     public ImageDto(int id, String imageData) {

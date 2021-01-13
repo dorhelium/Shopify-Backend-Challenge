@@ -15,6 +15,7 @@ public class Image implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private byte[] imageData;
+    private boolean isPublic;
 
     public Image(byte[] imageData) {
         this.imageData = imageData;
