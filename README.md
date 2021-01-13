@@ -4,7 +4,7 @@ Task: : Build an image repository
 
 This is a backend image repository server built with SpringBoot framework, integrating Spring Data JPA, Hibernate, PostgreSQL for data storage, and Spring Security for authorization and authentication.
 
-To run and test this project on local: please ensure Java1.8, maven, PostgreSQL are installed on the machine.
+To run and test this project on local: please ensure Java 1.8, maven, PostgreSQL are installed on the machine.
 
 # Overview
 
@@ -67,7 +67,7 @@ Description: Get a list all **public** images in the image store with {id}.
 Description: Register a new user and create an image store for the user. 
 
 
-
+# Demo
 
 
 
