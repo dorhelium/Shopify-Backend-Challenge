@@ -25,7 +25,7 @@ Each registered user owns the a image store. Each image store contain many image
 
 # APIs
 
-<h2>APIs: Only the user who owns the image store have access</h2>
+<h2> - Only the user who owns the image store have access</h2>
 
 - **POST   /image_store/{id}/addImages**
 
@@ -50,7 +50,7 @@ Description: Update the image with {image_id} in the image store with {id}.
 
 
 
-<h2>APIs: all users with valid credentials can access</h2>
+<h2> - all users with valid credentials can access</h2>
 
 -  **GET  /images**
 
@@ -61,11 +61,17 @@ Description: Get a list all **public** images in the repository (from all image 
 Description: Get a list all **public** images in the image store with {id}.
 
 
-<h2>APIs: Everyone can access. No credentials needed</h2>
+<h2> - Everyone can access. No credentials needed</h2>
 
 - **POST /new_user**
 
 Description: Register a new user and create an image store for the user. 
+
+<h2> - User with ADMIN role can access</h2>
+
+- **DELETE /user/{id}**
+
+Description: Delete a user and its image store. Accessed by ADMIN to remove non-active user
 
 
 # Demo
