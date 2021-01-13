@@ -74,7 +74,7 @@ Description: Register a new user and create an image store for the user.
 Description: Delete a user and its image store. Accessed by ADMIN to remove non-active user
 
 
-# Demo
+# Postman Demo
 
 
 
