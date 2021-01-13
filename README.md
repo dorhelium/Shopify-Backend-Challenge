@@ -1,4 +1,6 @@
-# Summer 2021 Shopify-Backend-Challenge: Build an image repository
+# Summer 2021 Shopify-Backend-Challenge
+
+Task: : Build an image repository
 
 This is a backend image repository server built with SpringBoot framework, integrating Spring Data JPA, Hibernate, PostgreSQL for data storage, and Spring Security for authorization and authentication.
 
