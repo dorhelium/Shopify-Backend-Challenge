@@ -50,7 +50,7 @@ Request Body: User
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Response Body: ImageStoreDto
 
-## - Only the user who owns the image store have access
+## - Only the user who owns the image store has access
 
 - **POST   /image_store/{id}/addImages**
 
