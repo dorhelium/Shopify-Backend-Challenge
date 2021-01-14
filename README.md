@@ -123,7 +123,9 @@ Response Body: List of ImageDto
 <br>
 
 
-# Postman Demo
+## Postman Demo
+
+Below is a Postman demo of a flow that includes all APIs.
 
 
 
