@@ -37,6 +37,19 @@ Each registered user owns the a image store. Each image store contain many image
 
 # APIs
 
+## - Everyone can access. No credentials needed
+
+- **POST /new_user**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Description: Register a new user and create a new image store for the user. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Request Body: User
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: ImageStoreDto
+
 ## - Only the user who owns the image store have access
 
 - **POST   /image_store/{id}/addImages**
@@ -106,19 +119,6 @@ Description: Get a list all **public** images in the image store with {id}.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Response Body: List of ImageDto
 
-
-## - Everyone can access. No credentials needed
-
-- **POST /new_user**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Description: Register a new user and create a new image store for the user. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Request Body: User
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Response Body: ImageStoreDto
 
 <br>
 
