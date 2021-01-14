@@ -23,7 +23,7 @@ public class PublicImageController {
         return imageStoreService.getAllPublicImages();
     }
 
-    @RequestMapping(value = "/images/image_store/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/image_store/{id}/images", method = RequestMethod.GET)
     public List<ImageDto> getAllPublicImagesByImageStore(@PathVariable(name="id") int storeId){
         return imageStoreService.getAllPublicImagesByImageStore(storeId);
     }

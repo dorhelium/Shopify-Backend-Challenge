@@ -2,6 +2,7 @@ package Doreen.shopifybackendchallenge.Controllers;
 
 import Doreen.shopifybackendchallenge.Entities.Dto.ImageDto;
 import Doreen.shopifybackendchallenge.Entities.Dto.ImageStoreDto;
+import Doreen.shopifybackendchallenge.Entities.User;
 import Doreen.shopifybackendchallenge.Exceptions.UnauthorizedActionException;
 import Doreen.shopifybackendchallenge.Services.ImageStoreService;
 import Doreen.shopifybackendchallenge.Services.UserService;
@@ -19,6 +20,7 @@ public class ImageStoreController {
 
     @Autowired
     private UserService userService;
+
 
     @RequestMapping(value = "/image_store/{id}/addImages", method = RequestMethod.POST)
     public ImageStoreDto addImagesToImageStore(@RequestBody List<ImageDto> imageDtos, @PathVariable(name="id") int storeId, Principal principal){
@@ -54,5 +56,19 @@ public class ImageStoreController {
         }
         return imageStoreService.updateExistingImage(imageDto, imageId,storeId);
     }
+
+    @RequestMapping(value = "/register_user", method = RequestMethod.POST)
+    public ImageStoreDto newImageStore(@RequestBody User user){
+        return userService.registerNewUser(user);
+    }
+
+    @RequestMapping(value = "/cancel_user/{username}", method = RequestMethod.DELETE)
+    public void newImageStore( @PathVariable(name="username") String username, Principal principal){
+        if(!principal.getName().equals(username)){
+            throw new UnauthorizedActionException("Unauthorized to cancel user-" + username + ". You can only cancel your own user");
+        }
+        userService.cancelUser(username);
+    }
+
 
 }

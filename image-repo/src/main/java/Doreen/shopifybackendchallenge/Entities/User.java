@@ -14,6 +14,6 @@ public class User {
     String username;
     String password;
 
-    @OneToOne
+    @OneToOne (orphanRemoval=true, cascade=CascadeType.ALL)
     ImageStore imageStore;
 }

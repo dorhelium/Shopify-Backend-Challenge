@@ -21,6 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private AuthenticationEntryPoint authEntryPoint;
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -35,8 +38,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/register_user").permitAll()
                 .anyRequest().authenticated()
-                .and().httpBasic();
+                .and().httpBasic()
+                .authenticationEntryPoint(authEntryPoint);
     }
 
 

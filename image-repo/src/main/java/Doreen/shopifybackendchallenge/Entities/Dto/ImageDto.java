@@ -10,8 +10,8 @@ import java.util.Base64;
 @Setter
 public class ImageDto {
     private int id;
-    private String imageData;
     private boolean isPublic;
+    private String imageData;
 
     public ImageDto (Image image){
         this.id=image.getId();

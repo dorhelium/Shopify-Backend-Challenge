@@ -9,14 +9,13 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-@RestController
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler (InvalidDataException.class)
     public ResponseEntity<ApplicationError> handleInvalidDataException
             (InvalidDataException ex, WebRequest webRequest) {
         ApplicationError error = new ApplicationError();
-        error.setCode(401);
+        error.setCode(404);
         error.setMessage(ex.getMessage());
         error.setStatus(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
@@ -31,4 +30,6 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         error.setStatus(HttpStatus.FORBIDDEN);
         return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
+
+
 }

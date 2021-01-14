@@ -1,6 +1,12 @@
 package Doreen.shopifybackendchallenge.Services;
 
+import Doreen.shopifybackendchallenge.Entities.Dto.ImageStoreDto;
+import Doreen.shopifybackendchallenge.Entities.Image;
+import Doreen.shopifybackendchallenge.Entities.ImageStore;
 import Doreen.shopifybackendchallenge.Entities.User;
+import Doreen.shopifybackendchallenge.Exceptions.InvalidDataException;
+import Doreen.shopifybackendchallenge.Repositories.ImageRepository;
+import Doreen.shopifybackendchallenge.Repositories.ImageStoreRepository;
 import Doreen.shopifybackendchallenge.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +25,10 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    private ImageRepository imageRepository;
+    @Autowired
+    private ImageStoreRepository imageStoreRepository;
 
     public int getStoreId(String username){
         User user =  userRepository.findById(username).orElse(null);
@@ -38,6 +48,26 @@ public class UserService implements UserDetailsService {
         return new MyUserDetails(user);
     }
 
+    public ImageStoreDto registerNewUser(User user) {
+        User storedUser = userRepository.findById(user.getUsername()).orElse(null);
+        if (storedUser != null){
+            throw new InvalidDataException("Username "+ user.getUsername()+ " is already used. Choose another one.");
+        }
+        ImageStore imageStore = new ImageStore();
+        imageStoreRepository.save(imageStore);
+        user.setImageStore(imageStore);
+        User newUser = userRepository.save(user);
+        return new ImageStoreDto(newUser.getImageStore());
+    }
+
+    public void cancelUser(String username) {
+        User storedUser = userRepository.findById(username).orElse(null);
+        if (storedUser==null){
+            throw new InvalidDataException("User "+ username+ " does not exist");
+        }
+        userRepository.delete(storedUser);
+    }
+
     public class MyUserDetails implements UserDetails {
 
         private String username;
@@ -47,7 +77,7 @@ public class UserService implements UserDetailsService {
         public MyUserDetails(User user) {
             this.username = user.getUsername();
             this.password = user.getPassword();
-            this.authorities = Arrays.asList(new SimpleGrantedAuthority("Store-" + user.getImageStore().getId()));
+            this.authorities = Arrays.asList(new SimpleGrantedAuthority("USER"));
         }
 
         @Override

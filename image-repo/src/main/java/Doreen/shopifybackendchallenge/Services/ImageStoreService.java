@@ -104,7 +104,7 @@ public class ImageStoreService {
             throw new InvalidDataException("Image store-"+storeId+" does not have image-"+imageId);
         }
         image.setPublic(imageDto.isPublic());
-        image.setImageData(DatatypeConverter.parseBase64Binary(imageDto.getImageData()));
+        if (imageDto.getImageData()!=null) image.setImageData(DatatypeConverter.parseBase64Binary(imageDto.getImageData()));
         imageRepository.save(image);
         ImageStoreDto imageStoreDto =new ImageStoreDto(store);
         return imageStoreDto;
