@@ -33,7 +33,7 @@ Each registered user owns the a image store. Each image store contain many image
 
 * Bulk add/delete images from user's own image store are allowed. These APIs are **transactional** to ensure all or none during bulk add/delete. These actions require authentication.
 
-* The images are accepted and returned as Base64 format. In the database, images are stored as byte arrays.
+* The images are accepted and returned as Base64 format. To convert an image into Base64 format, consider using this link https://www.w3docs.com/tools/image-base64. In the database, images are stored as byte arrays.
 
 <br>
 
