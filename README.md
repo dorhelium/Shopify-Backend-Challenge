@@ -165,7 +165,6 @@ Below is a Postman demo of a flow that includes all APIs. (Click on the images t
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/34765166/104537036-30d4f080-55e7-11eb-8f3c-069543cee5da.png">
 
 12.	For all APIs that needs valid credentials. If the wrong credentials are provided (user not registered yet or wrong password), the API returns 401.
-
 Examples:
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/34765166/104537128-5b26ae00-55e7-11eb-80b9-6bcd65d747bb.png">
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/34765166/104537155-67127000-55e7-11eb-8a08-7e6b2b5f1520.png">
