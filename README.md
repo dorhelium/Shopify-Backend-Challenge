@@ -9,9 +9,9 @@ This is a backend image repository server built with SpringBoot framework, integ
 Prerequisite: Java 1.8, maven, PostgreSQL are installed on the machine.
 
 Database: (you need to create a database with following information before running the program)
-* datasource url=jdbc:postgresql://localhost:5432/image_repo
-* datasource username=postgres
-* datasource password=postgres
+* datasource url = jdbc:postgresql://localhost:5432/image_repo
+* datasource username = postgres
+* datasource password = postgres
 
 <br>
 
