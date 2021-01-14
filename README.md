@@ -25,11 +25,13 @@ Each registered user owns the a image store. Each image store contain many image
 
 * The users can add/delete/update/get the all the images from their own image store. These actions require authentication.
 
-* Add/delete/update images from other user's image store is forbbiden. 
+* Add/delete/update images from other user's image store are forbbiden. 
 
-* Private images from other user's image store are not allowed to be retrieved. Public images can be retrived by all registered users.
+* All users can retrieve public images by image store id. Users can also retrive all public images in all image store. These actions require authentication.
 
-* Bulk add/delete images are allowed. These APIs are **transactional** to ensure all or none during bulk add/delete.
+* Private images from other user's image store are not allowed to be retrieved. 
+
+* Bulk add/delete images from user's own image store are allowed. These APIs are **transactional** to ensure all or none during bulk add/delete. These actions require authentication.
 
 * The images are accepted and returned as Base64 format. In the database, images are stored as byte arrays.
 
