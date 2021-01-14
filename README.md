@@ -31,6 +31,8 @@ Each registered user owns the a image store. Each image store contain many image
 
 * Bulk add/delete images are allowed. These APIs are **transactional** to ensure all or none during bulk add/delete.
 
+* The images are accepted and returned as Base64 format. In the database, images are stored as byte arrays.
+
 <br>
 
 # APIs
@@ -46,7 +48,7 @@ Description: Add a list of new images to the image store with {id}.
 Request Body: List of ImageDto
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-API Response: (success, code = 200, ImageStoreDto) or (Data Vialation, code = 401,  NOT_FOUND) or (Unauthorized, code = 403, FORBIDDEN)
+Response Body: ImageStoreDto
 
 
 -  **DELETE   /image_store/{id}/deleteImages**
@@ -54,15 +56,30 @@ API Response: (success, code = 200, ImageStoreDto) or (Data Vialation, code = 40
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Description: Delete a list of existing images from the image store with {id}. 
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Request Body: List of ImageDto
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: ImageStoreDto
+
 -  **GET   /image_store/{id}**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Description: Get a list of all images in the image store with {id}. 
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: ImageStoreDto
+
 -  **PUT   /image_store/{id}/image/{image_id}**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Description: Update the image with {image_id} in the image store with {id}. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Request Body: ImageDto
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: ImageStoreDto
 
 -  **DELETE   /cancel_user/{username}**
 
@@ -78,10 +95,16 @@ Description: Cancel/remove a registered user, along with ots image store and all
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Description: Get a list all **public** images in the repository (from all image stores). 
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: List of ImageDto
+
 -  **GET  /image_store/{id}/images**
 
-/image_store/{id}/images
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Description: Get a list all **public** images in the image store with {id}.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: List of ImageDto
 
 
 ## - Everyone can access. No credentials needed
@@ -89,7 +112,13 @@ Description: Get a list all **public** images in the image store with {id}.
 - **POST /new_user**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Description: Register a new user and create an image store for the user. 
+Description: Register a new user and create a new image store for the user. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Request Body: User
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Response Body: ImageStoreDto
 
 <br>
 
