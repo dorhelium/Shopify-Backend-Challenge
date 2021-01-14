@@ -125,7 +125,7 @@ Response Body: List of ImageDto
 
 ## Postman Demo
 
-Below is a Postman demo of a flow that includes all APIs.
+Below is a Postman demo of a flow that includes all APIs. (Click on the images to view the details)
 
 1. Register two users. Should return the ImageStoreDto owned by the registered user. User hello owns ImageStore-1. User doreen owns ImageStore with id-2
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/34765166/104535685-a8ede700-55e4-11eb-9630-a4bb4b462f84.png">
