@@ -1,4 +1,4 @@
-# Summer 2021 Shopify-Backend-Challenge
+# Shopify-Backend-Challenge: Summer 2021 internship
 
 Task: Build an image repository
 
