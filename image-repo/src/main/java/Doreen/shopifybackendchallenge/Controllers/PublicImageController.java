@@ -2,13 +2,12 @@ package Doreen.shopifybackendchallenge.Controllers;
 
 import Doreen.shopifybackendchallenge.Entities.Dto.ImageDto;
 import Doreen.shopifybackendchallenge.Entities.Dto.ImageStoreDto;
+import Doreen.shopifybackendchallenge.Entities.User;
 import Doreen.shopifybackendchallenge.Exceptions.UnauthorizedActionException;
 import Doreen.shopifybackendchallenge.Services.ImageStoreService;
+import Doreen.shopifybackendchallenge.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -18,6 +17,9 @@ public class PublicImageController {
     @Autowired
     private ImageStoreService imageStoreService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/images", method = RequestMethod.GET)
     public List<ImageDto> getAllPublicImages(){
         return imageStoreService.getAllPublicImages();
@@ -26,6 +28,11 @@ public class PublicImageController {
     @RequestMapping(value = "/image_store/{id}/images", method = RequestMethod.GET)
     public List<ImageDto> getAllPublicImagesByImageStore(@PathVariable(name="id") int storeId){
         return imageStoreService.getAllPublicImagesByImageStore(storeId);
+    }
+
+    @RequestMapping(value = "/register_user", method = RequestMethod.POST)
+    public ImageStoreDto newImageStore(@RequestBody User user){
+        return userService.registerNewUser(user);
     }
 
 

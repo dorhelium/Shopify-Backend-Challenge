@@ -14,7 +14,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-public class ImageStoreController {
+public class AuthenticatedImageController {
     @Autowired
     private ImageStoreService imageStoreService;
 
@@ -55,11 +55,6 @@ public class ImageStoreController {
             throw new UnauthorizedActionException("Unauthorized to access ImageStore-"+ storeId);
         }
         return imageStoreService.updateExistingImage(imageDto, imageId,storeId);
-    }
-
-    @RequestMapping(value = "/register_user", method = RequestMethod.POST)
-    public ImageStoreDto newImageStore(@RequestBody User user){
-        return userService.registerNewUser(user);
     }
 
     @RequestMapping(value = "/cancel_user/{username}", method = RequestMethod.DELETE)
